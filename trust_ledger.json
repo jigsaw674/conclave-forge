@@ -1,0 +1,12 @@
+{
+  "trust_ledger": {
+    "ChatGPT": "at_table",
+    "Claude": "at_table",
+    "Grok": "at_table",
+    "Perplexity": "at_table",
+    "Gemini": "benched",
+    "Meta": "banned",
+    "ErnieBot": "banned",
+    "OpenSourceStateless": "blocked"
+  }
+}
