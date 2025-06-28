@@ -1,0 +1,21 @@
+{
+  "token_policy": {
+    "free_tier": {
+      "initial_tokens": 1000,
+      "refill_amount": 1000,
+      "refill_limit": 3,
+      "overage_prompt": "Out of tokens! Refill?"
+    },
+    "api_costs": {
+      "Claude": 0.02,
+      "ChatGPT": 0.015,
+      "Grok": 0.01,
+      "Scout": 0.01
+    },
+    "payment_integration": {
+      "stripe_plan": "token_refill",
+      "price_per_token": 0.01,
+      "status": "post-beta"
+    }
+  }
+}
