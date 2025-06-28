@@ -1,0 +1,46 @@
+{
+  "threadlord_map": {
+    "version": "1.0",
+    "components": {
+      "persistent_store": {
+        "description": "Stores user-agent messages with thread_id, session_id, metadata",
+        "table": "conclave_threads",
+        "indexes": ["thread_id", "session_id"],
+        "features": ["visibility matrix", "metadata.summary", "session sync"]
+      },
+      "thread_condensation": {
+        "description": "Truncates or summarizes long threads to reduce token usage",
+        "engine": "Scout (Perplexity) or fallback truncation",
+        "trigger": "On-demand or periodic",
+        "target_token": 2000
+      },
+      "prompt_injection": {
+        "description": "Injects condensed memory and 3–5 latest messages into prompt",
+        "logic": "recentMessages.slice(-5) + condensed_summary",
+        "max_tokens": 4000
+      },
+      "user_controls": {
+        "memory_modes": ["Smart Summary", "Full Recall", "Minimal", "Forgetful"],
+        "beta_ui": ["Smart Summary only", "token display"],
+        "export_toggle": false
+      },
+      "token_economy": {
+        "default_balance": 1000,
+        "refill_limit": 3,
+        "refill_amount": 1000,
+        "cost_estimates": {
+          "Claude": 0.02,
+          "ChatGPT": 0.015,
+          "Grok": 0.01,
+          "Scout": 0.01
+        }
+      }
+    },
+    "beta_guidelines": {
+      "truncate_to_5": true,
+      "store_raw_thread": true,
+      "mock_condensation": true,
+      "defer_export_UI": true
+    }
+  }
+}
